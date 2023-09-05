@@ -1,0 +1,198 @@
+openapi: 3.1.0
+x-stoplight:
+  id: i6a67pfma5m8h
+info:
+  title: todo-api
+  version: 1.0.0
+  summary: Todo API provides a simple way for people to manage their tasks and plan their day. This API can be used to create mobile and web applications
+  contact:
+    name: Xi Sheng
+    url: teohxisheng.com
+    email: txsheng0609@hotmail.com
+  description: This includes all the endpoints of this todo api
+  license: 
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: 'http://localhost:3000'
+    description: Local Development
+paths:
+  /task:
+    get:
+      summary: List all Tasks
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+                  x-stoplight:
+                    id: dnhsriyvpzfu9
+        '401':
+          $ref: '#/components/responses/401'
+      operationId: get-todo
+      x-stoplight:
+        id: f8f3xnlacr9eh
+      description: This returns a list of tasks
+      parameters:
+        - $ref: '#/components/parameters/limit'
+    parameters: []
+    post:
+      summary: Create a new Task
+      operationId: post-task
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/401'
+      x-stoplight:
+        id: t7szw0eho6dus
+      description: This creates a task object.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      parameters:
+        - $ref: '#/components/parameters/content-Type'
+  '/task/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: the unique identifier of the task
+    get:
+      summary: List a Task
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/401'
+      operationId: get-task-id
+      x-stoplight:
+        id: okqmz3sypntbf
+      description: List a task using a given id
+      requestBody:
+        content: {}
+      parameters: []
+    put:
+      summary: Update a Task
+      operationId: put-task-id
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/401'
+      x-stoplight:
+        id: t8cvvt49thssd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      description: Update a task based on a given id
+      parameters: []
+components:
+  schemas:
+    Task:
+      title: Task
+      x-stoplight:
+        id: k65r6be36p10n
+      type: object
+      properties:
+        id:
+          type: number
+          x-stoplight:
+            id: 3b2ew58g65e36
+          readOnly: true
+        name:
+          type: string
+          x-stoplight:
+            id: abxriakuv7q64
+        description:
+          type: string
+          x-stoplight:
+            id: 1o6j53wibr10n
+        completed:
+          type: boolean
+          x-stoplight:
+            id: 39edz126354yv
+        completed_at:
+          type: string
+          x-stoplight:
+            id: i37pnjw7q5wkx
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          x-stoplight:
+            id: x1xhhyx1mrjz5
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          x-stoplight:
+            id: e0tb9k88qas8u
+          format: date-time
+          readOnly: true
+      required:
+        - id
+        - name
+        - description
+        - completed
+        - completed_at
+        - created_at
+        - updated_at
+  securitySchemes:
+    eY9xQ7v_-3A:
+      name: apiKey
+      type: apiKey
+      in: query
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: number
+      description: Returns a limited number of results
+    content-Type:
+      name: content-Type
+      in: header
+      required: false
+      schema:
+        type: string
+      description: application/json
+  responses:
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ./responses/error.yaml
+security:
+  - eY9xQ7v_-3A: []
+tags:
+  - name: todo
+    description: todo api

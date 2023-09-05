@@ -1,0 +1,16 @@
+title: error
+x-stoplight:
+  id: 3v8dgdhhofood
+type: object
+properties:
+  code:
+    type: string
+    description: the response code
+    x-stoplight:
+      id: 6tphww4yh4u2u
+  message:
+    type: string
+    x-stoplight:
+      id: p20y8600tjpxf
+required:
+  - code
