@@ -10,9 +10,9 @@ info:
     url: teohxisheng.com
     email: txsheng0609@hotmail.com
   description: This includes all the endpoints of this todo api
-  license: 
+  license:
     name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 servers:
   - url: 'http://localhost:3000'
     description: Local Development
@@ -20,8 +20,6 @@ paths:
   /task:
     get:
       summary: List all Tasks
-      tags:
-        - todo
       responses:
         '200':
           description: OK
@@ -74,8 +72,6 @@ paths:
         description: the unique identifier of the task
     get:
       summary: List a Task
-      tags:
-        - todo
       responses:
         '200':
           description: OK
