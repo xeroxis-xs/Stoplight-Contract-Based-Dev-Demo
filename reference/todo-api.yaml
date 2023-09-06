@@ -16,6 +16,8 @@ info:
 servers:
   - url: 'http://localhost:3000'
     description: Local Development
+  - url: 'http://127.0.0.1:4010'
+    description: Prism Mock Server
 paths:
   /task:
     get:
