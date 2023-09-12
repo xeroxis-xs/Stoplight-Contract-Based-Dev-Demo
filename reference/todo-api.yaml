@@ -56,8 +56,9 @@ paths:
       x-stoplight:
         id: f8f3xnlacr9eh
       description: This returns a list of tasks
-      parameters:
-        - $ref: '#/components/parameters/limit'
+      parameters: []
+      security:
+        - Authorization: []
     parameters: []
     post:
       summary: Create a new Task
@@ -107,6 +108,8 @@ paths:
       requestBody:
         content: {}
       parameters: []
+      security:
+        - Authorization: []
     put:
       summary: Update a Task
       operationId: put-task-id
@@ -205,8 +208,8 @@ components:
         application/json:
           schema:
             $ref: ./responses/error.yaml
-security:
-  - eY9xQ7v_-3A: []
 tags:
   - name: todo
     description: todo api
+security:
+  - Authorization: []
