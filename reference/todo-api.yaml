@@ -180,10 +180,9 @@ components:
         - created_at
         - updated_at
   securitySchemes:
-    eY9xQ7v_-3A:
-      name: apiKey
-      type: apiKey
-      in: query
+    Authorization:
+      type: http
+      scheme: basic
   parameters:
     limit:
       name: limit
